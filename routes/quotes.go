@@ -33,12 +33,8 @@ func GetStockPrice(stock string) (models.AVQuoteResponse, error) {
 			log.Error(err.Error())
 			return quoteResponse, err
 		}
-		/* if (models.GlobalQuote{} == quoteResponse.Quote) {
-			http.Error(w, "Stock Not Found", 404)
-			return
-		} */
+
 	}
 	fmt.Println(quoteResponse.Quote)
-	// response is for now in JSON, will change as integration is developed
 	return quoteResponse, nil
 }
