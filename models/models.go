@@ -27,9 +27,9 @@ type GlobalQuote struct {
 	LatestTradingDay string `json:"07. latest trading day"`
 	PreviousClose    string `json:"08. previous close"`
 	Change           string `json:"09. change"`
-	ChangePercent    string `json:"10. changePercent"`
+	ChangePercent    string `json:"10. change percent"`
 }
 
 type AVQuoteResponse struct {
-	Quote GlobalQuote
+	Quote GlobalQuote `json:"Global Quote"`
 }

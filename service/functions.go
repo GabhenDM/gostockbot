@@ -2,6 +2,7 @@ package service
 
 import (
 	"fmt"
+	"strconv"
 	"strings"
 
 	"github.com/gabhendm/gostockbot/models"
@@ -35,6 +36,11 @@ func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 			return
 		}
 		// return price message
-		s.ChannelMessageSend(m.ChannelID, fmt.Sprintf("The price of Stock: %s is: %s", words[1], quoteResponse.Quote.Price))
+		price, err := strconv.ParseFloat(quoteResponse.Quote.Price, 2)
+		if err != nil {
+			log.Error(err.Error())
+			return
+		}
+		s.ChannelMessageSend(m.ChannelID, fmt.Sprintf("The price of Stock: %s is: $%.2f BRL", words[1], price))
 	}
 }

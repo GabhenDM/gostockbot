@@ -2,7 +2,6 @@ package routes
 
 import (
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -15,7 +14,6 @@ func GetStockPrice(stock string) (models.AVQuoteResponse, error) {
 	quoteResponse := models.AVQuoteResponse{}
 	if stock != "" {
 		endpoint := quoteRequest.FormatRequest("GLOBAL_QUOTE", stock)
-		fmt.Println(endpoint)
 		resp, err := http.Get(endpoint)
 		if err != nil {
 			return quoteResponse, err
@@ -28,13 +26,11 @@ func GetStockPrice(stock string) (models.AVQuoteResponse, error) {
 			log.Error(err.Error())
 			return quoteResponse, err
 		}
-
 		if err := json.Unmarshal(body, &quoteResponse); err != nil {
 			log.Error(err.Error())
 			return quoteResponse, err
 		}
 
 	}
-	fmt.Println(quoteResponse.Quote)
 	return quoteResponse, nil
 }
