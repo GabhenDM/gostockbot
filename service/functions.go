@@ -79,4 +79,8 @@ func MessageCreate(s *discordgo.Session, m *discordgo.MessageCreate) {
 		}
 
 	}
+	if strings.HasPrefix(m.Content, "!help") {
+		s.ChannelMessageSend(m.ChannelID, "[+] Usage - !stockSearch - Search for a Symbol | !stockPrice - Check Symbol Price | !stockOverview - Check Symbol Overview")
+		s.ChannelMessageSend(m.ChannelID, "[!] Any bugs or Issues, Feel free to check over at https://github.com/gabhendm/gostockbot or e-mail me at: gabhendm@gmail.com")
+	}
 }
