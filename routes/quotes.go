@@ -24,7 +24,6 @@ func GetStockPrice(stock string) (models.AVQuoteResponse, error) {
 		defer resp.Body.Close()
 
 		body, err := ioutil.ReadAll(resp.Body)
-		fmt.Println(resp.Body)
 		if err != nil {
 			log.Error(err.Error())
 			return quoteResponse, err
